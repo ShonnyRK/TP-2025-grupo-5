@@ -53,7 +53,7 @@ def getAllFavourites(request):
     else:
         user = get_user(request)
 
-        favourite_list = repositories.get_favourites_by_user(user) # buscamos desde el repositories.py TODOS Los favoritos del usuario (variable 'user').
+        favourite_list = repositories.get_all_favourites(user) # buscamos desde el repositories.py TODOS Los favoritos del usuario (variable 'user').
         mapped_favourites = []
 
         for favourite in favourite_list:
