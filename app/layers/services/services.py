@@ -7,12 +7,19 @@ from ..utilities import translator
 from django.contrib.auth import get_user
 
 # función que devuelve un listado de cards. Cada card representa una imagen de la API de Pokemon
-def getAllImages():
+def getAllImages(request=None):
     raw_images = transport.getAllImages()
+    favourite_ids = []
+
+    if request and request.user.is_authenticated:
+        favourites = getAllFavourites(request)
+        favourite_ids = [str(card.id) for card in favourites]
+
     card_list = []
 
     for raw in raw_images:
         card = translator.fromRequestIntoCard(raw)
+        card.is_favourite = str(card.id) in favourite_ids  # Marcar si ya es favorito
         card_list.append(card)
 
     return card_list
@@ -34,7 +41,7 @@ def filterByType(type_filter):
 
     for card in getAllImages():
         # debe verificar si la casa de la card coincide con la recibida por parámetro. Si es así, se añade al listado de filtered_cards.
-        if type_filter.lower() in [t.lower() for t in card.types]:
+        if type_filter.lower() in [type.lower() for type in card.types]:
             filtered_cards.append(card)
 
     return filtered_cards
