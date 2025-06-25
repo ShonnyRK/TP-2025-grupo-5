@@ -111,13 +111,28 @@
         {% else %} {% for img in images %}
         <div class="col">
             <!-- evaluar si la imagen pertenece al tipo fuego, agua o planta -->
-                    <div class="card 
-                        {% if 'grass' in img.types %}border-success
-                        {% elif 'fire' in img.types %}border-danger
-                        {% elif 'water' in img.types %}border-primary
-                        {% else %}border-warning
-                        {% endif %}
-                        mb-3 ms-5" style="max-width: 540px;">
+                        <div class="card 
+                            {% with first_type=img.types.0|lower %}
+                                {% if first_type == 'grass' %}border-success
+                                {% elif first_type == 'fire' %}border-danger
+                                {% elif first_type == 'water' %}border-primary
+                                {% elif first_type == 'electric' %}border-warning
+                                {% elif first_type == 'psychic' %}border-pink
+                                {% elif first_type == 'ground' %}border-secondary
+                                {% elif first_type == 'rock' %}border-dark
+                                {% elif first_type == 'normal' %}border-light
+                                {% elif first_type == 'fighting' %}border-danger
+                                {% elif first_type == 'poison' %}border-purple
+                                {% elif first_type == 'flying' %}border-info
+                                {% elif first_type == 'bug' %}border-success
+                                {% elif first_type == 'steel' %}border-secondary
+                                {% elif first_type == 'ice' %}border-info
+                                {% elif first_type == 'ghost' %}border-dark
+                                {% else %}border-warning
+                                {% endif %}
+                            {% endwith %}
+                            mb-3 ms-5" style="max-width: 540px;">
+
                         
                         <div class="row g-0">
                             <div class="col-md-4">

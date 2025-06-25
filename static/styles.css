@@ -138,5 +138,45 @@ table.table td i {
 .hint-text {
     float: left;
     margin-top: 6px;
-    font-size: 95%;
+    font-size: 95%;    
+}
+
+.border-pink {
+    border: 3px solid hotpink !important;
+}
+
+.border-purple {
+    border: 3px solid purple !important;
+}
+
+.border-dark {
+    border: 3px solid #343a40 !important;
+}
+
+.border-light {
+    border: 3px solid #a5aa78 !important;
+}
+
+.border-secondary {
+    border: 3px solid #6c757d !important;
+}
+
+.border-info {
+    border: 3px solid #0dcaf0 !important;
+}
+
+.border-warning {
+    border: 3px solid #ffc107 !important;
+}
+
+.border-primary {
+    border: 3px solid #0d6efd !important;
+}
+
+.border-danger {
+    border: 3px solid #dc3545 !important;
+}
+
+.border-success {
+    border: 3px solid #198754 !important;
 }
