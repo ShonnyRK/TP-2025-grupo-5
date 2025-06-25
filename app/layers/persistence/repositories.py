@@ -8,7 +8,7 @@ def save_favourite(fav):
     try:
         fav = Favourite.objects.create(
             name=fav.name,  # Nombre del personaje
-            id=fav.id,
+            pokemon_id=fav.id,  # ID de pokeapi
             types=fav.types,  # tipos
             height=fav.height,  # altura
             weight=fav.weight,  # peso
@@ -26,7 +26,7 @@ def save_favourite(fav):
 
 def get_all_favourites(user):
     return list(Favourite.objects.filter(user=user).values(
-        'id', 'name', 'height', 'weight', 'types','base_experience', 'image'
+        'id', 'pokemon_id', 'name', 'height', 'weight', 'types','base_experience', 'image'
     ))
 
 

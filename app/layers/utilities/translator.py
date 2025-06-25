@@ -8,7 +8,7 @@ def fromRequestIntoCard(poke_data):
     type_images = [services.get_type_icon_url_by_name(type_name) for type_name in types]
     
     card = Card(
-        id=poke_data.get('id'),
+        id=poke_data.get('id'),  # id de pokeapi, corresponde a pokemon_id en la base de datos
         name=poke_data.get('name'),
         height=poke_data.get('height'),
         weight=poke_data.get('weight'),
@@ -31,7 +31,7 @@ def getTypes(poke_data):
 def fromTemplateIntoCard(templ): 
     card = Card(
         name=templ.POST.get("name"),
-        id=templ.POST.get("id"),
+        id=templ.POST.get("id"),  # id de pokeapi, corresponde a pokemon_id en la base de datos
         height=templ.POST.get("height"),
         weight=templ.POST.get("weight"),
         types=templ.POST.get("types"),
@@ -52,7 +52,7 @@ def fromRepositoryIntoCard(repo_dict):
             types_list = []
     
     return Card(
-        id=repo_dict.get('id'),
+        id=repo_dict.get('pokemon_id'),  # id de pokeapi, corresponde a pokemon_id en la base de datos
         name=repo_dict.get('name'),
         height=repo_dict.get('height'),
         weight=repo_dict.get('weight'),
