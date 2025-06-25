@@ -21,7 +21,7 @@ def getAllImages():
     # Usar ThreadPoolExecutor para hacer peticiones paralelas
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
         # Crear futures para cada petición
-        future_to_id = {executor.submit(fetch_single_pokemon, id): id for id in range(1, 30)}
+        future_to_id = {executor.submit(fetch_single_pokemon, id): id for id in range(1, 152)}
         
         for future in concurrent.futures.as_completed(future_to_id):
             pokemon_id = future_to_id[future]

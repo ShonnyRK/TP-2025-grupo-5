@@ -11,7 +11,8 @@
         </form>
     </div>
 
-    <div class="d-flex gap-1 col-2 mx-auto mb-3">
+    <div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
+        {% comment %} Tipos principales {% endcomment %}
         <form method="post" action="{% url 'filter_by_type' %}">
             {% csrf_token %}
             <input type="hidden" name="type" value="fire">
@@ -28,6 +29,79 @@
             {% csrf_token %}
             <input type="hidden" name="type" value="grass">
             <button type="submit" class="btn btn-success">PLANTA</button>
+        </form>
+
+        {% comment %} Nuevos tipos añadidos {% endcomment %}
+        <form method="post" action="{% url 'filter_by_type' %}">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="electric">
+            <button type="submit" class="btn btn-warning">ELÉCTRICO</button>
+        </form>
+
+        <form method="post" action="{% url 'filter_by_type' %}">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="psychic">
+            <button type="submit" class="btn btn-outline-danger">PSÍQUICO</button>
+        </form>
+
+        <form method="post" action="{% url 'filter_by_type' %}">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="ground">
+            <button type="submit" class="btn btn-secondary">TIERRA</button>
+        </form>
+
+        <form method="post" action="{% url 'filter_by_type' %}">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="rock">
+            <button type="submit" class="btn btn-outline-secondary">ROCA</button>
+        </form>
+
+        <form method="post" action="{% url 'filter_by_type' %}">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="normal">
+            <button type="submit" class="btn btn-light">NORMAL</button>
+        </form>
+
+        <form method="post" action="{% url 'filter_by_type' %}">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="fighting">
+            <button type="submit" class="btn btn-dark">LUCHA</button>
+        </form>
+
+        <form method="post" action="{% url 'filter_by_type' %}">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="poison">
+            <button type="submit" class="btn btn-outline-purple" style="color: white; background-color: purple;">VENENO</button>
+        </form>
+
+        <form method="post" action="{% url 'filter_by_type' %}">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="flying">
+            <button type="submit" class="btn btn-info">VOLADOR</button>
+        </form>
+
+        <form method="post" action="{% url 'filter_by_type' %}">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="bug">
+            <button type="submit" class="btn btn-success">INSECTO</button>
+        </form>
+
+        <form method="post" action="{% url 'filter_by_type' %}">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="steel">
+            <button type="submit" class="btn btn-secondary">ACERO</button>
+        </form>
+
+        <form method="post" action="{% url 'filter_by_type' %}">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="ice">
+            <button type="submit" class="btn btn-info">HIELO</button>
+        </form>
+
+        <form method="post" action="{% url 'filter_by_type' %}">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="ghost">
+            <button type="submit" class="btn btn-dark">FANTASMA</button>
         </form>
     </div>
 
