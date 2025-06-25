@@ -43,7 +43,17 @@ def fromTemplateIntoCard(templ):
 
 # Cuando la información viene de la base de datos, para transformarla en una Card antes de mostrarla.
 def fromRepositoryIntoCard(repo_dict):
-    types_list = ast.literal_eval(repo_dict['types'])
+    # El campo types ya es una lista desde JSONField, no necesita ast.literal_eval()
+    types_list = repo_dict.get('types', [])
+    
+    # Si por alguna razón llegara como string, intentamos evaluarlo
+    if isinstance(types_list, str):
+        try:
+            types_list = ast.literal_eval(types_list)
+        except (ValueError, SyntaxError) as e:
+            print(f"Error al evaluar types: {e}, usando lista vacía")
+            types_list = []
+    
     return Card(
         id=repo_dict.get('id'),
         name=repo_dict.get('name'),
