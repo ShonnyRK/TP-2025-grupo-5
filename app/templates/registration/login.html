@@ -1,4 +1,5 @@
-{% extends 'header.html' %} {% block content %}
+{% extends 'header.html' %} 
+{% block content %}
 <div class="login-form" style="text-align: center;">
     <form action="" method="POST" style="display: inline-block;">
         {% csrf_token %}
@@ -13,5 +14,8 @@
             <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
         </div>
     </form>
+    <div style="margin-top: 15px;">
+        <a href="{% url 'register' %}">¿No tienes cuenta? Regístrate aquí</a>
+    </div>
 </div>
 {% endblock %}

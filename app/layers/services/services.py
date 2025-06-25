@@ -11,6 +11,7 @@ def getAllImages(request=None):
     raw_images = transport.getAllImages()
     favourite_ids = []
 
+    # Solo obtener favoritos si hay request y el usuario está autenticado
     if request and request.user.is_authenticated:
         favourites = getAllFavourites(request)
         favourite_ids = [str(card.id) for card in favourites]
@@ -26,9 +27,11 @@ def getAllImages(request=None):
 
 # función que filtra según el nombre del pokemon.
 def filterByCharacter(name):
+    # Obtener todas las imágenes una sola vez
+    all_cards = getAllImages()
     filtered_cards = []
 
-    for card in getAllImages():
+    for card in all_cards:
         # debe verificar si el name está contenido en el nombre de la card, antes de agregarlo al listado de filtered_cards.
         if name.lower() in card.name.lower():            
             filtered_cards.append(card)
@@ -37,9 +40,11 @@ def filterByCharacter(name):
 
 # función que filtra las cards según su tipo.
 def filterByType(type_filter):
+    # Obtener todas las imágenes una sola vez
+    all_cards = getAllImages()
     filtered_cards = []
 
-    for card in getAllImages():
+    for card in all_cards:
         # debe verificar si la casa de la card coincide con la recibida por parámetro. Si es así, se añade al listado de filtered_cards.
         if type_filter.lower() in [type.lower() for type in card.types]:
             filtered_cards.append(card)
@@ -57,21 +62,20 @@ def saveFavourite(request):
 def getAllFavourites(request):
     if not request.user.is_authenticated:
         return []
-    else:
-        user = get_user(request)
+    
+    user = get_user(request)
+    favourite_list = repositories.get_all_favourites(user) # buscamos desde el repositories.py TODOS Los favoritos del usuario (variable 'user').
+    mapped_favourites = []
 
-        favourite_list = repositories.get_all_favourites(user) # buscamos desde el repositories.py TODOS Los favoritos del usuario (variable 'user').
-        mapped_favourites = []
+    for favourite in favourite_list:
+        card = translator.fromRepositoryIntoCard(favourite) # convertimos cada favorito en una Card, y lo almacenamos en el listado de mapped_favourites que luego se retorna.
+        mapped_favourites.append(card)
 
-        for favourite in favourite_list:
-            card = translator.fromRepositoryIntoCard(favourite) # convertimos cada favorito en una Card, y lo almacenamos en el listado de mapped_favourites que luego se retorna.
-            mapped_favourites.append(card)
-
-        return mapped_favourites
+    return mapped_favourites
 
 def deleteFavourite(request):
-    favId = request.POST.get('id')
-    return repositories.delete_favourite(favId) # borramos un favorito por su ID
+    fav_id = request.POST.get('id')
+    return repositories.delete_favourite(fav_id) # borramos un favorito por su ID
 
 #obtenemos de TYPE_ID_MAP el id correspondiente a un tipo segun su nombre
 def get_type_icon_url_by_name(type_name):
