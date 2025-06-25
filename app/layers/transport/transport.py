@@ -9,8 +9,6 @@ from threading import Lock
 _cache = {}
 _cache_lock = Lock()
 
-# comunicación con la REST API.
-# este método se encarga de "pegarle" a la API y traer una lista de objetos JSON.
 def getAllImages():
     with _cache_lock:
         if _cache:
