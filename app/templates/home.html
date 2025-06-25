@@ -1,5 +1,12 @@
 {% extends 'header.html' %} {% block content %}
 <main>
+    <!-- Spinner de carga -->
+    <div id="spinner-container" style="display: none;" class="text-center my-5">
+        <div class="spinner-border text-primary" role="status" style="width: 5rem; height: 5rem;">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+        <p class="mt-2">Cargando imágenes...</p>
+    </div>    
     <h1 class="text-center">Buscador de Pokemon</h1>
 
     <div class="d-flex justify-content-center" style="margin-bottom: 1%">
@@ -105,7 +112,7 @@
         </form>
     </div>
 
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div id="card-container" class="row row-cols-1 row-cols-md-3 g-4">
         {% if images|length == 0 %}
         <h2 class="text-center">La búsqueda no arrojó resultados...</h2>
         {% else %} {% for img in images %}
@@ -187,4 +194,42 @@
         {% endif %}
     </div>
 </main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const spinner = document.getElementById("spinner-container");
+        const cardContainer = document.getElementById("card-container");
+
+        spinner.style.display = "block";
+        cardContainer.style.display = "none";
+
+        const images = document.querySelectorAll("#card-container img");
+        let loadedImages = 0;
+
+        if (images.length === 0) {
+            // Si no hay imágenes, mostrar directamente el contenido
+            spinner.style.display = "none";
+            cardContainer.style.display = "flex";
+        } else {
+            images.forEach((img) => {
+                const showContent = () => {
+                    loadedImages++;
+                    if (loadedImages === images.length) {
+                        spinner.style.display = "none";
+                        cardContainer.style.display = "flex";
+                    }
+                };
+
+                img.addEventListener("load", showContent);
+                img.addEventListener("error", showContent);
+            });
+
+            // Seguridad: si después de 5 segundos no termina, forzar mostrar contenido
+            setTimeout(() => {
+                spinner.style.display = "none";
+                cardContainer.style.display = "flex";
+            }, 5000);
+        }
+    });
+</script>
 {% endblock %}
