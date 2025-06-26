@@ -1,9 +1,43 @@
-{% extends 'header.html' %} {% block content %} {% if request.user.is_authenticated %}
-<h2 class="text-center">Bienvenido {{ user.username | upper }}!</h2>
-{% else %}
-<h2 class="text-center">Bienvenido!</h2>
-{% endif %}
-<p class="text-center">
-    Mirá las imágenes desde <a href="{% url 'home' %}">este link.</a>
-</p>
+{% extends 'header.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+.video-background {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+.index-content-simple {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    color: white;
+    text-shadow: 0 2px 8px #000;
+}
+</style>
+
+<video class="video-background" autoplay loop muted playsinline>
+    <source src="{% static 'rotom-dex-bg.mp4' %}" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+</video>
+
+<div class="index-content-simple">
+    <img src="{% static 'pokeapi.png' %}" alt="PokéAPI Logo" style="max-width: 220px; width: 40vw; min-width: 120px; margin-bottom: 18px; display: block; margin-left: auto; margin-right: auto;">
+    {% if request.user.is_authenticated %}
+        <h2 class="text-center">Bienvenido {{ user.username | upper }}!</h2>
+    {% else %}
+        <h2 class="text-center">Bienvenido!</h2>
+    {% endif %}
+    <p class="text-center">
+        Mira los Pokemon desde la 
+        <a href="{% url 'home' %}" style="vertical-align: middle; display: inline-block;">
+            <img src="{% static 'pokedex.png' %}" alt="Pokedex" style="height: 2.2em; max-width: 180px; min-width: 80px; margin-bottom: 0; display: inline; vertical-align: middle;">
+        </a>.
+    </p>
+</div>
 {% endblock %}

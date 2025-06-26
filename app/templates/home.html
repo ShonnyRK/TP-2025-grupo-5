@@ -48,25 +48,25 @@
         <form method="post" action="{% url 'filter_by_type' %}">
             {% csrf_token %}
             <input type="hidden" name="type" value="psychic">
-            <button type="submit" class="btn btn-outline-danger">PSÍQUICO</button>
+            <button type="submit" class="btn type-psychic">PSÍQUICO</button>
         </form>
 
         <form method="post" action="{% url 'filter_by_type' %}">
             {% csrf_token %}
             <input type="hidden" name="type" value="ground">
-            <button type="submit" class="btn btn-secondary">TIERRA</button>
+            <button type="submit" class="btn type-ground">TIERRA</button>
         </form>
 
         <form method="post" action="{% url 'filter_by_type' %}">
             {% csrf_token %}
             <input type="hidden" name="type" value="rock">
-            <button type="submit" class="btn btn-outline-secondary">ROCA</button>
+            <button type="submit" class="btn type-rock">ROCA</button>
         </form>
 
         <form method="post" action="{% url 'filter_by_type' %}">
             {% csrf_token %}
             <input type="hidden" name="type" value="normal">
-            <button type="submit" class="btn btn-light">NORMAL</button>
+            <button type="submit" class="btn type-normal">NORMAL</button>
         </form>
 
         <form method="post" action="{% url 'filter_by_type' %}">
@@ -84,7 +84,7 @@
         <form method="post" action="{% url 'filter_by_type' %}">
             {% csrf_token %}
             <input type="hidden" name="type" value="flying">
-            <button type="submit" class="btn btn-info">VOLADOR</button>
+            <button type="submit" class="btn type-flying">VOLADOR</button>
         </form>
 
         <form method="post" action="{% url 'filter_by_type' %}">
@@ -120,22 +120,22 @@
             <!-- evaluar si la imagen pertenece al tipo fuego, agua o planta -->
                         <div class="card 
                             {% with first_type=img.types.0|lower %}
-                                {% if first_type == 'grass' %}border-success
-                                {% elif first_type == 'fire' %}border-danger
-                                {% elif first_type == 'water' %}border-primary
-                                {% elif first_type == 'electric' %}border-warning
-                                {% elif first_type == 'psychic' %}border-pink
-                                {% elif first_type == 'ground' %}border-secondary
-                                {% elif first_type == 'rock' %}border-dark
-                                {% elif first_type == 'normal' %}border-light
-                                {% elif first_type == 'fighting' %}border-danger
-                                {% elif first_type == 'poison' %}border-purple
-                                {% elif first_type == 'flying' %}border-info
-                                {% elif first_type == 'bug' %}border-success
-                                {% elif first_type == 'steel' %}border-secondary
-                                {% elif first_type == 'ice' %}border-info
-                                {% elif first_type == 'ghost' %}border-dark
-                                {% else %}border-warning
+                                {% if first_type == 'grass' %}border-success bg-grass
+                                {% elif first_type == 'fire' %}border-danger bg-fire
+                                {% elif first_type == 'water' %}border-primary bg-water
+                                {% elif first_type == 'electric' %}border-warning bg-electric
+                                {% elif first_type == 'psychic' %}border-pink bg-psychic
+                                {% elif first_type == 'ground' %}border-secondary bg-ground
+                                {% elif first_type == 'rock' %}border-dark bg-rock
+                                {% elif first_type == 'normal' %}border-light bg-normal
+                                {% elif first_type == 'fighting' %}border-danger bg-fighting
+                                {% elif first_type == 'poison' %}border-purple bg-poison
+                                {% elif first_type == 'flying' %}border-info bg-flying
+                                {% elif first_type == 'bug' %}border-success bg-bug
+                                {% elif first_type == 'steel' %}border-secondary bg-steel
+                                {% elif first_type == 'ice' %}border-info bg-ice
+                                {% elif first_type == 'ghost' %}border-dark bg-ghost
+                                {% else %}border-warning bg-electric
                                 {% endif %}
                             {% endwith %}
                             mb-3 ms-5" style="max-width: 540px;">

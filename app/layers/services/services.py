@@ -56,7 +56,7 @@ def saveFavourite(request):
     fav = translator.fromTemplateIntoCard(request) # transformamos un request en una Card (ver translator.py)
     fav.user = get_user(request) # le asignamos el usuario correspondiente.
 
-    return repositories.save_favourite(fav) # lo guardamos en la BD.
+    return repositories.save_favourite(fav)
 
 # usados desde el template 'favourites.html'
 def getAllFavourites(request):

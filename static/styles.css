@@ -180,3 +180,73 @@ table.table td i {
 .border-success {
     border: 3px solid #198754 !important;
 }
+
+.btn.type-psychic {
+    background-color: #e06ba4 !important;
+    color: #fff !important;
+    border: 1.5px solid #e06ba4 !important;
+}
+
+.btn.type-ground {
+    background-color: #e2c290 !important;
+    color: #222 !important;
+    border: 1.5px solid #e2c290 !important;
+}
+
+.btn.type-rock {
+    background-color: #6d4c1b !important;
+    color: #fff !important;
+    border: 1.5px solid #6d4c1b !important;
+}
+
+.btn.type-normal {
+    background-color: #a5aa78 !important;
+    color: #222 !important;
+    border: 1.5px solid #a5aa78 !important;
+}
+
+button.type-psychic {
+    background-color: #e06ba4 !important;
+    color: #fff !important;
+    border: 1.5px solid #e06ba4 !important;
+}
+
+button.type-ground {
+    background-color: #e2c290 !important;
+    color: #222 !important;
+    border: 1.5px solid #e2c290 !important;
+}
+
+button.type-rock {
+    background-color: #6d4c1b !important;
+    color: #fff !important;
+    border: 1.5px solid #6d4c1b !important;
+}
+
+button.type-normal {
+    background-color: #a5aa78 !important;
+    color: #222 !important;
+    border: 1.5px solid #a5aa78 !important;
+}
+
+button.type-flying {
+    background-color: #b39ddb !important; /* morado pastel */
+    color: #fff !important;
+    border: 1.5px solid #b39ddb !important;
+}
+
+.bg-grass { background-color: #e6f4ea !important; }
+.bg-fire { background-color: #ffe5e0 !important; }
+.bg-water { background-color: #e0f0ff !important; }
+.bg-electric { background-color: #fff9e0 !important; }
+.bg-psychic { background-color: #fbe4f1 !important; }
+.bg-ground { background-color: #f7ecd9 !important; }
+.bg-rock { background-color: #ede3d1 !important; }
+.bg-normal { background-color: #f6f7e7 !important; }
+.bg-fighting { background-color: #fbeaea !important; }
+.bg-poison { background-color: #f3e0f7 !important; }
+.bg-flying { background-color: #ede7f6 !important; }
+.bg-bug { background-color: #eaf7e6 !important; }
+.bg-steel { background-color: #f0f0f0 !important; }
+.bg-ice { background-color: #e0f7fa !important; }
+.bg-ghost { background-color: #e6e6e6 !important; }

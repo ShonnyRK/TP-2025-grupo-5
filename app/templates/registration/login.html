@@ -1,21 +1,53 @@
-{% extends 'header.html' %} 
+{% extends 'header.html' %}
+{% load static %}
 {% block content %}
-<div class="login-form" style="text-align: center;">
-    <form action="" method="POST" style="display: inline-block;">
-        {% csrf_token %}
-        <h2 class="text-center">Inicio de sesión</h2>
-        <div class="form-group" style="margin-bottom: 5%;">
-            <input type="text" name="username" id="username" class="form-control" placeholder="Usuario" required="required">
+<style>
+.login-background-simple {
+    background-image: url('{% static "rotom-fondo.png" %}');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center top;
+    min-height: 100vh;
+    width: 100vw;
+}
+.login-content-simple {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login-form {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+</style>
+
+<div class="login-background-simple">
+    <div class="login-content-simple">
+        <div class="login-form">
+            <form action="" method="POST" style="display: inline-block; width: 100%;">
+                {% csrf_token %}
+                <h2 class="text-center">Inicio de sesión</h2>
+                <div class="form-group" style="margin-bottom: 5%;">
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Usuario" required="required">
+                </div>
+                <div class="form-group" style="margin-bottom: 5%;">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required="required">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+                </div>
+                <div class="text-center mt-3">
+                    <p>¿No tienes una cuenta? <a href="{% url 'register' %}">Regístrate aquí</a></p>
+                </div>
+            </form>
         </div>
-        <div class="form-group" style="margin-bottom: 5%;">
-            <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required="required">
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
-        </div>
-    </form>
-    <div style="margin-top: 15px;">
-        <a href="{% url 'register' %}">¿No tienes cuenta? Regístrate aquí</a>
     </div>
 </div>
 {% endblock %}

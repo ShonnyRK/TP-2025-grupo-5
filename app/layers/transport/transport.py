@@ -1,9 +1,4 @@
-"""
-Capa de transporte/comunicación con APIs externas.
-
-Este módulo maneja todas las comunicaciones con la API de Pokémon
-y proporciona funciones para obtener datos de Pokémon.
-"""
+# capa de transporte/comunicación con otras interfaces o sistemas externos.
 
 import requests
 from ...config import config
@@ -20,14 +15,7 @@ REQUEST_TIMEOUT = 10
 _cache = {}
 _cache_lock = Lock()
 
-
-def getAllImages() -> List[Dict]:
-    """
-    Obtiene todos los Pokémon de la API con cache.
-    
-    Returns:
-        List[Dict]: Lista de diccionarios con datos de Pokémon
-    """
+def getAllImages():
     with _cache_lock:
         if _cache:
             print("[transport.py]: Usando cache de Pokémon")
@@ -64,17 +52,8 @@ def getAllImages() -> List[Dict]:
     print(f"[transport.py]: Obtenidos {len(json_collection)} Pokémon")
     return json_collection
 
-
-def fetch_single_pokemon(pokemon_id: int) -> Optional[Dict]:
-    """
-    Obtiene un solo Pokémon de la API.
-    
-    Args:
-        pokemon_id: ID del Pokémon a obtener
-        
-    Returns:
-        Dict: Datos del Pokémon o None si hay error
-    """
+def fetch_single_pokemon(pokemon_id):
+    """Función auxiliar para obtener un solo Pokémon"""
     try:
         response = requests.get(
             config.STUDENTS_REST_API_URL + str(pokemon_id), 
@@ -103,17 +82,8 @@ def fetch_single_pokemon(pokemon_id: int) -> Optional[Dict]:
         print(f"[transport.py]: Error inesperado para el id {pokemon_id}: {e}")
         return None
 
-
-def get_type_icon_url_by_id(type_id: int) -> str:
-    """
-    Obtiene la URL de la imagen correspondiente para un type_id específico.
-    
-    Args:
-        type_id: ID del tipo de Pokémon
-        
-    Returns:
-        str: URL de la imagen del tipo
-    """
+# obtiene la imagen correspodiente para un type_id especifico 
+def get_type_icon_url_by_id(type_id):
     base_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/colosseum/'
     return f"{base_url}{type_id}.png"
 
